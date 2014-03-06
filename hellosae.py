@@ -1,6 +1,6 @@
+#coding:utf-8
 from flask import Flask
-from flask import session,redirect,url_for,request,render_template
-from werkzeug import secure_filename
+from flask import request,render_template
 import MySQLdb as mdb
 import os
 import sae.const
@@ -18,7 +18,7 @@ def upload():
 	tel = request.args['tel']
 	content = request.args['content']
 	try:
-		conn = mdb.connect(host= sae.const.MYSQL_DB , user=sae.const.MYSQL_USER,passwd=sae.const.MYSQL_PASS ,db=sae.const.MYSQL_DB,charset='utf8')	
+		conn = mdb.connect(host= sae.const.MYSQL_DB , port=sae.const.MYSQL_PORT,user=sae.const.MYSQL_USER,passwd=sae.const.MYSQL_PASS ,db=sae.const.MYSQL_DB,charset='utf8')	
 	except:
 		return render_template('wrong.html')
 	cursor = conn.cursor()
